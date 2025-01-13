@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# Проверка, что пароль передан как аргумент
+if [ -z "$1" ]; then
+  echo "Ошибка: Пароль для VNC не передан."
+  echo "Пример запуска: ./script.sh ваш_пароль"
+  exit 1
+fi
+
+VNC_PASSWORD="$1"
+
 # Обновление системы и установка зависимостей
 sudo apt update -y
 sudo apt install xfce4 xfce4-goodies libgtk-3-0 libnotify4 libnss3 libxss1 libxtst6 xdg-utils libatspi2.0-0 libsecret-1-0 -y
@@ -29,10 +38,7 @@ EOF
 chmod +x /root/.vnc/xstartup'
 
 # Установка пароля VNC
-vncpasswd <<EOF
-htm_zqc5EPV*qwk9abz
-htm_zqc5EPV*qwk9abz
-EOF
+echo -e "$VNC_PASSWORD\n$VNC_PASSWORD" | vncpasswd
 
 # Запуск VNC сервера
 vncserver -kill :1 2>/dev/null || true
